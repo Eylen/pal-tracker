@@ -43,10 +43,9 @@ public class InMemoryTimeEntryRepository  implements TimeEntryRepository {
         return timeEntry;
     }
 
-    public TimeEntry delete(long id) {
-        if (timeEntries.get(id) == null) {
-            return null;
+    public void delete(long id) {
+        if (timeEntries.get(id) != null) {
+             timeEntries.remove(id);
         }
-        return timeEntries.remove(id);
     }
 }
