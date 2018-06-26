@@ -10,6 +10,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;
 
 import javax.sql.DataSource;
+import java.util.TimeZone;
 
 @SpringBootApplication
 public class PalTrackerApplication {
@@ -20,6 +21,7 @@ public class PalTrackerApplication {
 
     @Bean
     TimeEntryRepository timeEntryRepository(DataSource dataSource) {
+        TimeZone.setDefault(TimeZone.getTimeZone("UTC"));
         return new JdbcTimeEntryRepository(dataSource);
     }
 
